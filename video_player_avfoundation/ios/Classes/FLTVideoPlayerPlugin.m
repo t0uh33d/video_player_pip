@@ -274,11 +274,12 @@ NS_INLINE UIViewController *rootViewController() {
     self.pictureInPictureController =
         [[AVPictureInPictureController alloc] initWithPlayerLayer:self.playerLayer];
     // [self setAutomaticallyStartPictureInPicture:NO];
-    self.pictureInPictureController.delegate = self;
+    
      if (@available(iOS 14.2, *)) {
     self.pictureInPictureController.canStartPictureInPictureAutomaticallyFromInline =
-        true;
+        YES;
     }
+    self.pictureInPictureController.delegate = self;
   }
 }
 
@@ -287,7 +288,7 @@ NS_INLINE UIViewController *rootViewController() {
   if (!self.pictureInPictureController) return;
   if (@available(iOS 14.2, *)) {
     self.pictureInPictureController.canStartPictureInPictureAutomaticallyFromInline =
-        true;
+        YES;
   }
 }
 
