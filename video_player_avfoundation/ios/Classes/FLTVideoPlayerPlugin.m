@@ -273,12 +273,7 @@ NS_INLINE UIViewController *rootViewController() {
   if ([AVPictureInPictureController isPictureInPictureSupported]) {
     self.pictureInPictureController =
         [[AVPictureInPictureController alloc] initWithPlayerLayer:self.playerLayer];
-    // [self setAutomaticallyStartPictureInPicture:NO];
-    
-     if (@available(iOS 14.2, *)) {
-    self.pictureInPictureController.canStartPictureInPictureAutomaticallyFromInline =
-        YES;
-    }
+     [self setAutomaticallyStartPictureInPicture:NO];
     self.pictureInPictureController.delegate = self;
   }
 }
@@ -288,7 +283,7 @@ NS_INLINE UIViewController *rootViewController() {
   if (!self.pictureInPictureController) return;
   if (@available(iOS 14.2, *)) {
     self.pictureInPictureController.canStartPictureInPictureAutomaticallyFromInline =
-        YES;
+        canStartPictureInPictureAutomaticallyFromInline;
   }
 }
 
@@ -404,9 +399,11 @@ NS_INLINE UIViewController *rootViewController() {
     return;
   }
   if (_isPlaying) {
-    [_player play];
+//    [self.pictureInPictureController isPictureInPictureActive] ? [self.pictureInPictureController.playerLayer.player play] :
+      [_player play];
   } else {
-    [_player pause];
+//    [self.pictureInPictureController isPictureInPictureActive] ? [self.pictureInPictureController.playerLayer.player pause] :
+      [_player pause];
   }
   _displayLink.paused = !_isPlaying;
 }
@@ -471,8 +468,14 @@ NS_INLINE UIViewController *rootViewController() {
   [self updatePlayingState];
 }
 
+
+// return the position of pip controller when it is active
 - (int64_t)position {
-  return FLTCMTimeToMillis([_player currentTime]);
+    if([self.pictureInPictureController isPictureInPictureActive]) {
+        int64_t time = FLTCMTimeToMillis([self.pictureInPictureController.playerLayer.player currentTime]);
+        return time;
+    }
+    return FLTCMTimeToMillis([_player currentTime]);
 }
 
 - (int64_t)duration {
