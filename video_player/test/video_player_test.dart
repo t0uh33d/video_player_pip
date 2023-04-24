@@ -99,6 +99,9 @@ class FakeController extends ValueNotifier<VideoPlayerValue>
 
   @override
   Future<void> stopPictureInPicture() async {}
+
+  @override
+  Future<void> pipPlay() async {}
 }
 
 Future<ClosedCaptionFile> _loadClosedCaption() async =>

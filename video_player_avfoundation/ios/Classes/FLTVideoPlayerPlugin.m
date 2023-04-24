@@ -66,6 +66,7 @@ static void *playbackLikelyToKeepUpContext = &playbackLikelyToKeepUpContext;
 static void *playbackBufferEmptyContext = &playbackBufferEmptyContext;
 static void *playbackBufferFullContext = &playbackBufferFullContext;
 
+
 @implementation FLTVideoPlayer
 - (instancetype)initWithAsset:(NSString *)asset frameUpdater:(FLTFrameUpdater *)frameUpdater {
   NSString *path = [[NSBundle mainBundle] pathForResource:asset ofType:nil];
@@ -274,6 +275,7 @@ NS_INLINE UIViewController *rootViewController() {
     self.pictureInPictureController =
         [[AVPictureInPictureController alloc] initWithPlayerLayer:self.playerLayer];
      [self setAutomaticallyStartPictureInPicture:NO];
+//      self.pictureInPictureController.requiresLinearPlayback = true;
     self.pictureInPictureController.delegate = self;
   }
 }
@@ -308,6 +310,8 @@ NS_INLINE UIViewController *rootViewController() {
       _eventSink(@{@"event" : @"startingPictureInPicture"});
     }
     [self.pictureInPictureController startPictureInPicture];
+      
+    
   } else if (self.pictureInPictureController && !self.isPictureInPictureStarted &&
              [self.pictureInPictureController isPictureInPictureActive]) {
     [self.pictureInPictureController stopPictureInPicture];
@@ -323,6 +327,15 @@ NS_INLINE UIViewController *rootViewController() {
     _eventSink(@{@"event" : @"stoppedPictureInPicture"});
   }
 }
+
+//- (void)playAfterDelay {
+//    double delayInSeconds = 2; // set the delay time in seconds
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//        printf("Playing pip after delay");
+//        [self.pictureInPictureController.playerLayer.player play];
+//    });
+//}
 
 - (void)pictureInPictureControllerDidStartPictureInPicture:
     (AVPictureInPictureController *)pictureInPictureController {
@@ -459,8 +472,16 @@ NS_INLINE UIViewController *rootViewController() {
 }
 
 - (void)play {
-  _isPlaying = YES;
+    _isPlaying = YES;
+    printf("-- normal play");
   [self updatePlayingState];
+}
+
+- (void)pipPlay {
+    if([self.pictureInPictureController isPictureInPictureActive]) {
+        [self.pictureInPictureController.playerLayer.player play];
+        printf("-- pip play");
+    }
 }
 
 - (void)pause {
@@ -790,5 +811,11 @@ NS_INLINE UIViewController *rootViewController() {
   FLTVideoPlayer *player = self.playersByTextureId[input.textureId];
   [player startOrStopPictureInPicture:NO];
 }
+
+- (void)pipPlay:(FLTTextureMessage *)input error:(FlutterError **)error {
+  FLTVideoPlayer *player = self.playersByTextureId[input.textureId];
+  [player pipPlay];
+}
+
 
 @end

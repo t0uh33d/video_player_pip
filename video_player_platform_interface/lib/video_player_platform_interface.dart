@@ -135,6 +135,11 @@ abstract class VideoPlayerPlatform extends PlatformInterface {
     throw UnimplementedError(
         'stopPictureInPicture() has not been implemented.');
   }
+
+  /// plays the playerLayer attached to the AVPictureInPictureController
+  Future<void> pipPlay(int textureId) {
+    throw UnimplementedError('pipPlay() has not been implemented.');
+  }
 }
 
 class _PlaceholderImplementation extends VideoPlayerPlatform {}

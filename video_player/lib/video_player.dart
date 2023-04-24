@@ -579,6 +579,14 @@ class VideoPlayerController extends ValueNotifier<VideoPlayerValue> {
     await _videoPlayerPlatform.stopPictureInPicture(_textureId);
   }
 
+  /// plays the playerLayer attached to the AVPictureInPictureController
+  Future<void> pipPlay() async {
+    if (!value.isInitialized || _isDisposed) {
+      return;
+    }
+    await _videoPlayerPlatform.pipPlay(_textureId);
+  }
+
   Future<void> _applyPlaybackSpeed() async {
     if (_isDisposedOrNotInitialized) {
       return;

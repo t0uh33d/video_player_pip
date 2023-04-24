@@ -127,6 +127,12 @@ class _ApiLogger implements TestHostVideoPlayerApi {
     log.add('stopPictureInPicture');
     stopPictureInPictureMessage = msg;
   }
+
+  @override
+  void pipPlay(TextureMessage msg) {
+    log.add('startPictureInPicture');
+    textureMessage = msg;
+  }
 }
 
 void main() {

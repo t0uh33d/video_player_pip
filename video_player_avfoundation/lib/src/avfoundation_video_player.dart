@@ -218,6 +218,11 @@ class AVFoundationVideoPlayer extends VideoPlayerPlatform {
     ));
   }
 
+  @override
+  Future<void> pipPlay(int textureId) {
+    return _api.pipPlay(TextureMessage(textureId: textureId));
+  }
+
   EventChannel _eventChannelFor(int textureId) {
     return EventChannel('flutter.io/videoPlayer/videoEvents$textureId');
   }

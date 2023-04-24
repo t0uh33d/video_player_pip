@@ -161,4 +161,7 @@ abstract class AVFoundationVideoPlayerApi {
 
   @ObjCSelector('stopPictureInPicture:')
   void stopPictureInPicture(StopPictureInPictureMessage msg);
+
+  @ObjCSelector('pipPlay:')
+  void pipPlay(TextureMessage msg);
 }
