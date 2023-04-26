@@ -27,13 +27,6 @@ dev_dependencies:
   pigeon: ^9.2.5
 
 # FOR TESTING ONLY. DO NOT MERGE.
-# dependency_overrides:
-#   video_player_platform_interface:
-#     path: ../video_player_platform_interface/
-
 dependency_overrides:
   video_player_platform_interface:
-    git:
-      url: https://github.com/t0uh33d/video_player_pip.git
-      ref: main
-      path: video_player_platform_interface/
+    path: ../video_player_platform_interface/

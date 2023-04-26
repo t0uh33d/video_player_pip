@@ -201,7 +201,7 @@
     },
     {
       "name": "video_player_platform_interface",
-      "rootUri": "file:///Users/codewave/.pub-cache/git/video_player_pip-7963b404b28745b868bda114ee80a1696e0b763c/video_player_platform_interface",
+      "rootUri": "../../video_player_platform_interface",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -224,7 +224,7 @@
       "languageVersion": "2.14"
     }
   ],
-  "generated": "2023-04-24T06:39:11.781374Z",
+  "generated": "2023-04-26T10:55:39.990085Z",
   "generator": "pub",
   "generatorVersion": "3.0.0-322.0.dev"
 }

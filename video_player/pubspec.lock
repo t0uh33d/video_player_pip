@@ -192,38 +192,30 @@ packages:
   video_player_android:
     dependency: "direct main"
     description:
-      path: video_player_android
-      ref: main
-      resolved-ref: "7963b404b28745b868bda114ee80a1696e0b763c"
-      url: "https://github.com/t0uh33d/video_player_pip.git"
-    source: git
+      path: "../video_player_android"
+      relative: true
+    source: path
     version: "2.3.10"
   video_player_avfoundation:
     dependency: "direct main"
     description:
-      path: video_player_avfoundation
-      ref: main
-      resolved-ref: "7963b404b28745b868bda114ee80a1696e0b763c"
-      url: "https://github.com/t0uh33d/video_player_pip.git"
-    source: git
+      path: "../video_player_avfoundation"
+      relative: true
+    source: path
     version: "2.4.0"
   video_player_platform_interface:
     dependency: "direct main"
     description:
-      path: video_player_platform_interface
-      ref: main
-      resolved-ref: "7963b404b28745b868bda114ee80a1696e0b763c"
-      url: "https://github.com/t0uh33d/video_player_pip.git"
-    source: git
+      path: "../video_player_platform_interface"
+      relative: true
+    source: path
     version: "6.1.0"
   video_player_web:
     dependency: "direct main"
     description:
-      path: video_player_web
-      ref: main
-      resolved-ref: "7963b404b28745b868bda114ee80a1696e0b763c"
-      url: "https://github.com/t0uh33d/video_player_pip.git"
-    source: git
+      path: "../video_player_web"
+      relative: true
+    source: path
     version: "2.0.13"
 sdks:
   dart: ">=2.19.0 <4.0.0"

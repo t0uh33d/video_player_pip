@@ -33,35 +33,12 @@ dev_dependencies:
     sdk: flutter
 
 # FOR TESTING ONLY. DO NOT MERGE.
-
-# dependency_overrides:
-#   video_player_android:
-#     path: ../video_player_android/
-#   video_player_avfoundation:
-#     path: ../video_player_avfoundation/
-#   video_player_platform_interface:
-#     path: ../video_player_platform_interface/
-#   video_player_web:
-#     path: ../video_player_web/
-
 dependency_overrides:
   video_player_android:
-    git:
-      url: https://github.com/t0uh33d/video_player_pip.git
-      ref: main
-      path: video_player_android/
+    path: ../video_player_android/
   video_player_avfoundation:
-    git:
-      url: https://github.com/t0uh33d/video_player_pip.git
-      ref: main
-      path: video_player_avfoundation/
+    path: ../video_player_avfoundation/
   video_player_platform_interface:
-    git:
-      url: https://github.com/t0uh33d/video_player_pip.git
-      ref: main
-      path: video_player_platform_interface/
+    path: ../video_player_platform_interface/
   video_player_web:
-    git:
-      url: https://github.com/t0uh33d/video_player_pip.git
-      ref: main
-      path: video_player_web/
+    path: ../video_player_web/
